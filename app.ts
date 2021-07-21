@@ -128,6 +128,7 @@ window.onload = () => {
     }
     showMessage("A Thais é incrível");
     showMessage("A Helena é inteligente");
+
     // ----------------
     function sumNumbers(x: number, y:number): number{
         return x + y;
@@ -135,6 +136,7 @@ window.onload = () => {
     var resultSum: number;
     resultSum = sumNumbers(1, 2);
     document.getElementById('content11').innerHTML = "The sum is: " + resultSum;
+
     // -------------------
     function checkNumberBelowTen(myNumber: number): boolean {
         if(myNumber < 10){
@@ -145,9 +147,34 @@ window.onload = () => {
         }
     }
     document.getElementById('content12').innerHTML = "É menor que 10? " + checkNumberBelowTen(5);
+
     // ---------------------
     var myAdd: (baseValue: number, increment: number) => number = function (x: number, y: number): number {
         return x + y;
     }
     document.getElementById('content13').innerHTML = "The result of myAdd is " + myAdd(5, 5);
+
+    // -------------
+    // a interrogação depois do nome do parâmetro o torna opcional 
+    function addNumber(n1: number, n2:number, n3?:number): number {
+        var result: number;
+
+        if(isNaN(n3)){
+            result = n1 + n2;
+        }
+        else {
+            result = n1 + n2 + n3;
+        }
+        return result;
+    }
+    var resultAdd: number;
+    resultAdd = addNumber(3, 2, 5);
+    document.getElementById('content14').innerHTML = "The result of addNumber is " + resultAdd;
+
+    // ------------
+    function buildName(firstName: string, ...lastName: string[]){
+        return firstName + " " + lastName.join(" ");
+    }
+    var name = buildName("Thais", "Cardoso", "de", "Farias");
+    document.getElementById('content14').innerHTML = "The result of buildName is " + name;
 };

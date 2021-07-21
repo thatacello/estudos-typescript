@@ -135,4 +135,29 @@ window.onload = function () {
         return x + y;
     };
     document.getElementById('content13').innerHTML = "The result of myAdd is " + myAdd(5, 5);
+    // -------------
+    // a interrogação depois do nome do parâmetro o torna opcional 
+    function addNumber(n1, n2, n3) {
+        var result;
+        if (isNaN(n3)) {
+            result = n1 + n2;
+        }
+        else {
+            result = n1 + n2 + n3;
+        }
+        return result;
+    }
+    var resultAdd;
+    resultAdd = addNumber(3, 2, 5);
+    document.getElementById('content14').innerHTML = "The result of addNumber is " + resultAdd;
+    // ------------
+    function buildName(firstName) {
+        var lastName = [];
+        for (var _i = 1; _i < arguments.length; _i++) {
+            lastName[_i - 1] = arguments[_i];
+        }
+        return firstName + " " + lastName.join(" ");
+    }
+    var name = buildName("Thais", "Cardoso", "de", "Farias");
+    document.getElementById('content14').innerHTML = "The result of buildName is " + name;
 };
