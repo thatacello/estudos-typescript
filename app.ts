@@ -68,4 +68,33 @@ window.onload = () => {
         textOut5 += fruits[f] + " / ";
     }
     document.getElementById('content5').innerHTML = textOut5;
+
+    // break
+    var t: number;
+    var texto: string = "";
+
+    for(t = 0; t < 10; t++){
+        if(t == 3){
+            break;
+        }
+        else{
+            texto = texto + "(break) O número é " + t + "<br>";
+        }
+    }
+    document.getElementById('content6').innerHTML = texto;
+
+    // continue
+    var h: number;
+    var textoContinue: string = "";
+
+    for(h = 0; h < 10; h++){
+        // vai pular o número 3
+        if(h == 3){
+            continue;
+        }
+        else {
+            textoContinue = textoContinue + "(continue) O número é " + h + "<br>";
+        }
+    }
+    document.getElementById('content7').innerHTML = textoContinue;
 };
