@@ -177,4 +177,24 @@ window.onload = () => {
     }
     var name = buildName("Thais", "Cardoso", "de", "Farias");
     document.getElementById('content14').innerHTML = "The result of buildName is " + name;
+
+    // sobrecarga de funções
+    function calculateArea(x: number): number;
+    function calculateArea(x: number, y: number): number;
+    function calculateArea(x: number, y?: number): any{
+        var result: number;
+        if(y > 0){
+            result = x * y;
+        }else {
+            result = x * x;
+        }
+        return result;
+    }
+    document.getElementById('content15').innerHTML = "The result of calculateArea is " + calculateArea(7);
+
+    // arrow function 
+    
+
+
+
 };

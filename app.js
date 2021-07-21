@@ -160,4 +160,15 @@ window.onload = function () {
     }
     var name = buildName("Thais", "Cardoso", "de", "Farias");
     document.getElementById('content14').innerHTML = "The result of buildName is " + name;
+    function calculateArea(x, y) {
+        var result;
+        if (y > 0) {
+            result = x * y;
+        }
+        else {
+            result = x * x;
+        }
+        return result;
+    }
+    document.getElementById('content15').innerHTML = "The result of calculateArea is " + calculateArea(7);
 };
