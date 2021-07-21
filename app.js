@@ -171,4 +171,21 @@ window.onload = function () {
         return result;
     }
     document.getElementById('content15').innerHTML = "The result of calculateArea is " + calculateArea(7);
+    // function type/ arrow function
+    var resultSum1 = function calculateSum(x, y, z) {
+        var result;
+        result = x + y + z;
+        return result;
+    };
+    document.getElementById('content16').innerHTML = "The result of calculateArea is " + resultSum1(3, 4, 5);
+    // transcrevendo a função acima para arrow function
+    var resultSum2 = function (x, y, z) {
+        var result;
+        result = x + y + z;
+        return result;
+    };
+    document.getElementById('content17').innerHTML = "The result of calculateArea arrow function is " + resultSum2(3, 4, 5);
+    // transcrevendo outra vez em apenas 1 linha
+    var resultSum3 = function (x, y, z) { return x + y + z; };
+    document.getElementById('content18').innerHTML = "Arrow function de 1 linha, o resultado é : " + resultSum3(3, 4, 5);
 };

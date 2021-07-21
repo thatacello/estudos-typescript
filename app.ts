@@ -192,9 +192,24 @@ window.onload = () => {
     }
     document.getElementById('content15').innerHTML = "The result of calculateArea is " + calculateArea(7);
 
-    // arrow function 
-    
+    // function type/ arrow function
+    var resultSum1 = function calculateSum(x: number, y: number, z: number): number {
+        var result;
+        result = x + y + z;
+        return result;
+    }
+    document.getElementById('content16').innerHTML = "The result of calculateArea is " + resultSum1(3, 4, 5);
 
+    // transcrevendo a função acima para arrow function
+    var resultSum2 = (x: number, y: number, z: number) => {
+        var result;
+        result = x + y + z;
+        return result;
+    }
+    document.getElementById('content17').innerHTML = "The result of calculateArea arrow function is " + resultSum2(3, 4, 5);
 
+    // transcrevendo outra vez em apenas 1 linha
+    var resultSum3 = (x: number, y:number, z: number) => x + y + z;
+    document.getElementById('content18').innerHTML = "Arrow function de 1 linha, o resultado é : " + resultSum3(3, 4, 5);
 
 };
