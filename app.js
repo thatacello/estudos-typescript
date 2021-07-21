@@ -71,6 +71,7 @@ window.onload = function () {
     var h;
     var textoContinue = "";
     for (h = 0; h < 10; h++) {
+        // vai pular o número 3
         if (h == 3) {
             continue;
         }
@@ -79,4 +80,59 @@ window.onload = function () {
         }
     }
     document.getElementById('content7').innerHTML = textoContinue;
+    // try/catch
+    try {
+        throw new Error("Erro!");
+    }
+    catch (error) {
+        document.getElementById('content8').innerHTML = "<h1> Eu sou o catch: " + error.message + "</h1>";
+    }
+    // throw
+    function myCheck(myVar) {
+        if (myVar == "")
+            throw new Error("Empty");
+        if (myVar > 100)
+            throw new Error("Too High");
+        if (myVar < 10)
+            throw new Error("Too low");
+    }
+    try {
+        myCheck("");
+        alert("OK");
+    }
+    catch (error) {
+        document.getElementById('content9').innerHTML = "<span> Eu sou o catch: " + error.message + "</span>";
+    }
+    finally {
+        var varContent = document.getElementById('content9').innerHTML;
+        document.getElementById('content9').innerHTML = varContent + "<br>Hello World FINALLY";
+    }
+    // function types
+    function showMessage(text) {
+        document.getElementById('content10').innerHTML = "The message is: " + text;
+    }
+    showMessage("A Thais é incrível");
+    showMessage("A Helena é inteligente");
+    // ----------------
+    function sumNumbers(x, y) {
+        return x + y;
+    }
+    var resultSum;
+    resultSum = sumNumbers(1, 2);
+    document.getElementById('content11').innerHTML = "The sum is: " + resultSum;
+    // -------------------
+    function checkNumberBelowTen(myNumber) {
+        if (myNumber < 10) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    document.getElementById('content12').innerHTML = "É menor que 10? " + checkNumberBelowTen(5);
+    // ---------------------
+    var myAdd = function (x, y) {
+        return x + y;
+    };
+    document.getElementById('content13').innerHTML = "The result of myAdd is " + myAdd(5, 5);
 };
