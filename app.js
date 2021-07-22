@@ -46,7 +46,7 @@ var Product = /** @class */ (function () {
     Product.prototype.PriceWithDisccount = function (discount) {
         if (discount === void 0) { discount = 0; }
         var priceFinal = this.price - (this.price * discount);
-        alert(this.name + " : $" + priceFinal);
+        // alert(this.name + " : $" + priceFinal);
     };
     return Product;
 }());
@@ -58,12 +58,58 @@ var TV = /** @class */ (function (_super) {
         return _this;
     }
     TV.prototype.PriceWithDisccountTV = function (discount) {
-        alert("TV size: " + this.size + " pol");
+        // alert("TV size: " + this.size + " pol");
         _super.prototype.PriceWithDisccount.call(this, discount);
     };
     return TV;
 }(Product));
+// modificadores de acesso 
+// public -> default
+// private -> tem que ser usado dentro da própria classe
+// static -> não pode ser usado na instância da classe (no construtor, por exemplo)
+// get and set
+// class Person {
+//     private personName: string = null;
+//     constructor(){
+//     }
+//     // GET
+//     public get name(): string {
+//         // podemos acessar o personName (private) fora da classe devido o GET
+//         return "Person name is " + this.personName;
+//     }
+//     // SET
+//     public set name(value: string){
+//         this.personName = value;
+//     }
+// }
+// // usando GET e SET
+// class Main {
+//     private personOne: Person = null;
+//     constructor(){
+//         this.personOne = new Person();
+//         // using SET
+//         this.personOne.name = "Thais";
+//         // using GET
+//         alert(this.personOne.name);
+//     }
+// }
+// modules
+// está em Validation.ts
 window.onload = function () {
+    // modules
+    var strings = ['Thais', '55555555', '123'];
+    var validators = {};
+    validators['ZIP CODE'] = new Validation.CepValidator();
+    validators['Letters only'] = new Validation.LettersOnlyValidator();
+    var resultado = '';
+    strings.forEach(function (s) {
+        for (var name in validators) {
+            resultado = resultado + '"' + s + '" ' + (validators[name].isValidate(s) ? 'matches ' : 'does not match ') + name + "<br>";
+        }
+    });
+    document.getElementById('content19').innerHTML = resultado;
+    // get and set
+    // var main = new Main();
     // herança
     var myProduct = new Product('Table', 10.00);
     myProduct.PriceWithDisccount(0.2);
