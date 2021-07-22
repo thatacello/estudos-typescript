@@ -129,7 +129,15 @@ class TV extends Product {
 // import zipValidator = require('./ZipCodeValidator');
 // import letterValidator = require('./LettersOnlyValidator');
 
+// função genérica -> retorna o valor que eu especificar depois
+function echo<T>(arg: T): T {
+    return arg;
+}
+
 window.onload = () => {
+    // usando a função genérica
+    document.getElementById('content21').innerHTML = echo<string>("Hello World");
+
     // modulos externos
     // var strings = ['Helena', '8888888888', '321'];
     // var validators2:{[s: string]: validation2.StringValidator2} = {};

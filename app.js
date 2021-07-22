@@ -99,7 +99,12 @@ var TV = /** @class */ (function (_super) {
 // import validation2 = require('./Validation2');
 // import zipValidator = require('./ZipCodeValidator');
 // import letterValidator = require('./LettersOnlyValidator');
+// função genérica -> retorna o valor que eu especificar depois
+function echo(arg) {
+    return arg;
+}
 window.onload = function () {
+    document.getElementById('content21').innerHTML = echo("Hello World");
     // modulos externos
     // var strings = ['Helena', '8888888888', '321'];
     // var validators2:{[s: string]: validation2.StringValidator2} = {};
