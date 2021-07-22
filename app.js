@@ -93,21 +93,35 @@ var TV = /** @class */ (function (_super) {
 //         alert(this.personOne.name);
 //     }
 // }
-// modules
+// modules -> separar os arquivos
 // está em Validation.ts
+//modulos externos
+// import validation2 = require('./Validation2');
+// import zipValidator = require('./ZipCodeValidator');
+// import letterValidator = require('./LettersOnlyValidator');
 window.onload = function () {
-    // modules
-    var strings = ['Thais', '55555555', '123'];
-    var validators = {};
-    validators['ZIP CODE'] = new Validation.CepValidator();
-    validators['Letters only'] = new Validation.LettersOnlyValidator();
-    var resultado = '';
-    strings.forEach(function (s) {
-        for (var name in validators) {
-            resultado = resultado + '"' + s + '" ' + (validators[name].isValidate(s) ? 'matches ' : 'does not match ') + name + "<br>";
-        }
-    });
-    document.getElementById('content19').innerHTML = resultado;
+    // modulos externos
+    // var strings = ['Helena', '8888888888', '321'];
+    // var validators2:{[s: string]: validation2.StringValidator2} = {};
+    // validators2['ZIP CODE'] = new zipValidator();
+    // validators2['Letters only'] = new letterValidator();
+    // var resultado: string = '';
+    // strings.forEach(s => { for (var name in validators2) {
+    //     resultado = resultado + '"' + s + '" ' + (validators2[name].isAcceptable(s) ? 'matches ' : 'does not match ') + name + "<br>"
+    //     } 
+    // });
+    // document.getElementById('content20').innerHTML = resultado;
+    // modules (Validation.ts)
+    // var strings = ['Thais', '55555555', '123'];
+    // var validators:{[s: string]: Validation.StringValidator} = {};
+    // validators['ZIP CODE'] = new Validation.CepValidator();
+    // validators['Letters only'] = new Validation.LettersOnlyValidator();
+    // var resultado: string = '';
+    // strings.forEach(s => { for (var name in validators) {
+    //     resultado = resultado + '"' + s + '" ' + (validators[name].isValidate(s) ? 'matches ' : 'does not match ') + name + "<br>"
+    //     } 
+    // });
+    // document.getElementById('content19').innerHTML = resultado;
     // get and set
     // var main = new Main();
     // herança
