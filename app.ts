@@ -3,12 +3,148 @@ class Fruits {
     color: string;
     size: number;
 }
+
+interface LabelledValue {
+    label: string;
+    size: number;
+}
+
+interface SearchConf {
+    (source: string, subString: string): boolean;
+}
+
+interface StringArray {
+    [index: number]: string;
+}
+
+interface ClockInterface{
+    currentTime: Date;
+    setTime(d: Date);
+}
+// classe implementa uma interface 
+class Clock implements ClockInterface {
+    currentTime: Date;
+    setTime(d: Date){
+        this.currentTime = d;
+    }
+    constructor(h: number, m:number){}
+}
+
+interface Shape {
+    color: string;
+}
+
+interface PenStroke {
+    penWidth: number;
+}
+// interface que extende de outras interfaces
+interface Square extends Shape, PenStroke {
+    sideLength: number;
+}
+
+// classes 
+class Hello {
+    helloText: string;
+    constructor(textIn: string){
+        this.helloText = textIn;
+    }
+    message(): string {
+        return "Hello " + this.helloText;
+    }
+}
+
+// herança
+class Product {
+    name: string;
+    price: number;
+    constructor(theName: string, thePrice: number){
+        this.name = theName;
+        this.price = thePrice;
+    }
+
+    PriceWithDisccount(discount: number = 0){
+        var priceFinal: number = this.price - (this.price * discount);
+        // alert(this.name + " : $" + priceFinal);
+    }
+}
+
+class TV extends Product {
+    size: number;
+
+    constructor(name: string, price: number, theSize: number){
+        super(name, price);
+        this.size = theSize;
+    }
+
+    PriceWithDisccountTV(discount: number){
+        // alert("TV size: " + this.size + " pol");
+        super.PriceWithDisccount(discount);
+    }
+}
+
+// modificadores de acesso 
+// public -> default
+// private -> tem que ser usado dentro da própria classe
+// static -> não pode ser usado na instância da classe (no construtor, por exemplo)
+
+
 window.onload = () => {
+
+    // herança
+    var myProduct = new Product('Table', 10.00);
+    myProduct.PriceWithDisccount(0.2);
+
+    var myTV = new TV('TV HD', 1000.00, 32);
+    myTV.PriceWithDisccountTV(0.3);
+
+    // classe Hello
+    var myHello = new Hello("world!!!");
+    // alert(myHello.message());
+
+    // =======  interfaces extendidas
+    var square = <Square>{};
+    square.color = "blue";
+    square.penWidth = 5.0;
+    square.sideLength = 10;
+    // alert(square.color + " " + square.penWidth + " " + square.sideLength);
+
+    // interfaces
+    var mySearch: SearchConf;
+    mySearch = function (src: string, sub: string) {
+        var result = src.search(sub);
+        if(result == -1) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+    // alert("Result is " + mySearch("Thais Cardoso", "Helena"));
+
+    // interface com array
+    var myArray: StringArray;
+    myArray = ["Bob", "Fred"];
+    // alert(myArray[1]);
+
+    // sem interface
+    function printLabel(labelledObj: {label: string}) {
+        // alert(labelledObj.label);
+    }
+    var myObj = { label: "Size 10 Object"};
+    printLabel(myObj);
+
+    // com interface -> não permite remover o "size"
+    function printLabelWithInterface(labelledObj: {label: string}) {
+        // alert(labelledObj.label);
+    }
+    var myObjWithInterface = { size: 10, label: "Size 10 Object with interface"};
+    printLabelWithInterface(myObjWithInterface);
+
     // void não retorna nenhum valor, apenas executa uma ação
-    // function alertUser(): void {
-    //     alert("This is an alert message!");
-    // }
-    // alertUser();
+    function alertUser(): void {
+        // alert("This is an alert message!");
+    }
+    alertUser();
 
     // if/else
     // var number1: number = 12;
@@ -52,7 +188,7 @@ window.onload = () => {
     document.getElementById('content3').innerHTML = textOut3;
 
     // for com array 
-    var myArray: string[] = ["cat", "dog", "bird", "fish", "chicken", "bat"];
+    var myArray: StringArray = ["cat", "dog", "bird", "fish", "chicken", "bat"];
     var textOut4: string = "";
 
     for (var c: number = 0; c < 6; c++){
@@ -208,8 +344,10 @@ window.onload = () => {
     }
     document.getElementById('content17').innerHTML = "The result of calculateArea arrow function is " + resultSum2(3, 4, 5);
 
-    // transcrevendo outra vez em apenas 1 linha
+    // transcrevendo outra vez para arrow function em apenas 1 linha
     var resultSum3 = (x: number, y:number, z: number) => x + y + z;
     document.getElementById('content18').innerHTML = "Arrow function de 1 linha, o resultado é : " + resultSum3(3, 4, 5);
 
+
+    
 };

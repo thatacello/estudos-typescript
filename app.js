@@ -1,14 +1,116 @@
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var Fruits = /** @class */ (function () {
     function Fruits() {
     }
     return Fruits;
 }());
+// classe implementa uma interface 
+var Clock = /** @class */ (function () {
+    function Clock(h, m) {
+    }
+    Clock.prototype.setTime = function (d) {
+        this.currentTime = d;
+    };
+    return Clock;
+}());
+// classes 
+var Hello = /** @class */ (function () {
+    function Hello(textIn) {
+        this.helloText = textIn;
+    }
+    Hello.prototype.message = function () {
+        return "Hello " + this.helloText;
+    };
+    return Hello;
+}());
+// herança
+var Product = /** @class */ (function () {
+    function Product(theName, thePrice) {
+        this.name = theName;
+        this.price = thePrice;
+    }
+    Product.prototype.PriceWithDisccount = function (discount) {
+        if (discount === void 0) { discount = 0; }
+        var priceFinal = this.price - (this.price * discount);
+        alert(this.name + " : $" + priceFinal);
+    };
+    return Product;
+}());
+var TV = /** @class */ (function (_super) {
+    __extends(TV, _super);
+    function TV(name, price, theSize) {
+        var _this = _super.call(this, name, price) || this;
+        _this.size = theSize;
+        return _this;
+    }
+    TV.prototype.PriceWithDisccountTV = function (discount) {
+        alert("TV size: " + this.size + " pol");
+        _super.prototype.PriceWithDisccount.call(this, discount);
+    };
+    return TV;
+}(Product));
 window.onload = function () {
+    // herança
+    var myProduct = new Product('Table', 10.00);
+    myProduct.PriceWithDisccount(0.2);
+    var myTV = new TV('TV HD', 1000.00, 32);
+    myTV.PriceWithDisccountTV(0.3);
+    // classe Hello
+    var myHello = new Hello("world!!!");
+    // alert(myHello.message());
+    // =======  interfaces extendidas
+    var square = {};
+    square.color = "blue";
+    square.penWidth = 5.0;
+    square.sideLength = 10;
+    // alert(square.color + " " + square.penWidth + " " + square.sideLength);
+    // interfaces
+    var mySearch;
+    mySearch = function (src, sub) {
+        var result = src.search(sub);
+        if (result == -1) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    };
+    // alert("Result is " + mySearch("Thais Cardoso", "Helena"));
+    // interface com array
+    var myArray;
+    myArray = ["Bob", "Fred"];
+    // alert(myArray[1]);
+    // sem interface
+    function printLabel(labelledObj) {
+        // alert(labelledObj.label);
+    }
+    var myObj = { label: "Size 10 Object" };
+    printLabel(myObj);
+    // com interface -> não permite remover o "size"
+    function printLabelWithInterface(labelledObj) {
+        // alert(labelledObj.label);
+    }
+    var myObjWithInterface = { size: 10, label: "Size 10 Object with interface" };
+    printLabelWithInterface(myObjWithInterface);
     // void não retorna nenhum valor, apenas executa uma ação
-    // function alertUser(): void {
-    //     alert("This is an alert message!");
-    // }
-    // alertUser();
+    function alertUser() {
+        // alert("This is an alert message!");
+    }
+    alertUser();
     // if/else
     // var number1: number = 12;
     // var number2: number = 12;
@@ -185,7 +287,7 @@ window.onload = function () {
         return result;
     };
     document.getElementById('content17').innerHTML = "The result of calculateArea arrow function is " + resultSum2(3, 4, 5);
-    // transcrevendo outra vez em apenas 1 linha
+    // transcrevendo outra vez para arrow function em apenas 1 linha
     var resultSum3 = function (x, y, z) { return x + y + z; };
     document.getElementById('content18').innerHTML = "Arrow function de 1 linha, o resultado é : " + resultSum3(3, 4, 5);
 };
