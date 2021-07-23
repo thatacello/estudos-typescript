@@ -103,8 +103,15 @@ var TV = /** @class */ (function (_super) {
 function echo(arg) {
     return arg;
 }
+function echo2(arg) {
+    return arg;
+}
 window.onload = function () {
-    document.getElementById('content21').innerHTML = echo("Hello World");
+    // usando a interface genérica
+    var myEcho2 = echo;
+    document.getElementById('content22').innerHTML = myEcho2("Hello Interface Genérica");
+    // usando a função genérica
+    document.getElementById('content21').innerHTML = echo("Hello Função Genérica");
     // modulos externos
     // var strings = ['Helena', '8888888888', '321'];
     // var validators2:{[s: string]: validation2.StringValidator2} = {};

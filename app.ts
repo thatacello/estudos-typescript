@@ -134,9 +134,21 @@ function echo<T>(arg: T): T {
     return arg;
 }
 
+// interface genérica
+interface GenericEcho{
+    <T>(arg: T): T;
+}
+function echo2<T>(arg: T): T {
+    return arg;
+}
+
 window.onload = () => {
+    // usando a interface genérica
+    var myEcho2: GenericEcho = echo;
+    document.getElementById('content22').innerHTML = myEcho2<string>("Hello Interface Genérica");
+
     // usando a função genérica
-    document.getElementById('content21').innerHTML = echo<string>("Hello World");
+    document.getElementById('content21').innerHTML = echo<string>("Hello Função Genérica");
 
     // modulos externos
     // var strings = ['Helena', '8888888888', '321'];
